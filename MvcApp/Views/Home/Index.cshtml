@@ -1,8 +1,27 @@
-﻿@{
+﻿@using System.Globalization
+@model List<ExampleDto>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row ">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-3 m-3">
+            <div class="card shadow">
+                <div class="card-header">
+                    @item.Title
+                </div>
+                <div  class="card-body ">
+                    <h5 class="card-title">Sınav Hakkında</h5>
+                    <p class="card-text"><span class="fw-bold">Tarih: </span> @item.ExampleDate.ToString("dd MMMM yyyy", new CultureInfo("tr-TR")) </p>
+                    @* <p class="card-text"><span class="fw-bold">Temel Bilgi Soru Sayısı: </span> </p>
+                    <p class="card-text"><span class="fw-bold">Silah Bilgi Soru Sayısı: </span> </p> *@
+                    <a href="#" class="btn w-100 text-secondary fw-bold btn-info">Sınava Git</a>
+                </div>
+            </div>
+        </div>
+        }
 </div>

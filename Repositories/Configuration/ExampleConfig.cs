@@ -13,7 +13,9 @@ public class ExampleConfig : IEntityTypeConfiguration<Example>
             new Example
             {
                 Id = 1,
-                Title = "ÖZEL GÜVENLİK 112. TEMEL EĞİTİM YAZILI SINAV SORULARI (A GRUBU)"
+                Title = "ÖZEL GÜVENLİK 112. TEMEL EĞİTİM YAZILI SINAV SORULARI (A GRUBU)",
+                ExampleDate = new DateTime(2024, 12,  15),
+                CreateDate = new DateTime(2025, 4, 10)
             }
         );
     }

@@ -2,6 +2,7 @@
 using AutoMapper;
 using Entities.DTOs;
 using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using Repositories.Common;
 using Services.Contracts;
 
@@ -27,7 +28,7 @@ public class ExampleManager : IExampleService
 
     public List<ExampleDto> GetExamples()
     {
-        var examples = _repository.ExampleRepository.FindAll(false).ToList();
+        var examples = _repository.ExampleRepository.FindAll(false).Include(x => x.Questions).Include(x => x.GunQuestions).ToList();
         var mappingExamples =  _mapper.Map<List<ExampleDto>>(examples);
         return mappingExamples;
     }

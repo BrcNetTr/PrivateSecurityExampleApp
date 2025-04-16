@@ -1,21 +1,24 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using MvcApp.Models;
+using Services.Common;
 
 namespace MvcApp.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    private readonly IServiceManager _serviceManager;
+    public HomeController(ILogger<HomeController> logger, IServiceManager serviceManager)
     {
         _logger = logger;
+        _serviceManager = serviceManager;
     }
 
     public IActionResult Index()
     {
-        return View();
+        var examples = _serviceManager.ExampleService.GetExamples();
+        return View(examples);
     }
 
     public IActionResult Privacy()

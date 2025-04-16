@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repositories.Common;
 
@@ -10,9 +11,11 @@ using Repositories.Common;
 namespace Repositories.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20250416123031_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.15");
@@ -24,9 +27,6 @@ namespace Repositories.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CreateDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("ExampleDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
@@ -45,7 +45,6 @@ namespace Repositories.Migrations
                         {
                             Id = 1,
                             CreateDate = new DateTime(2025, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ExampleDate = new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "ÖZEL GÜVENLİK 112. TEMEL EĞİTİM YAZILI SINAV SORULARI (A GRUBU)"
                         });
                 });
